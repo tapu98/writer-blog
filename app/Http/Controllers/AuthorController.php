@@ -9,4 +9,5 @@ class AuthorController extends Controller
   public function index(Request $request){
     return view('backend.pages.home');
   }
+
 }

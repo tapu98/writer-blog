@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\AuthorController;
+use \App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +30,14 @@ Route::prefix('author')->name('author.')->group(function(){
 
     Route::middleware([])->group(function(){
         Route::get('/home', [AuthorController::class, 'index'])->name('home');
-    });
+    });   
 
 });
+
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/register', [AuthController::class, 'registerPost'])->name('register');
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
+
+Route::get('/home', [HomeController::class, 'index']);
+
