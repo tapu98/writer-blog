@@ -44,7 +44,7 @@
         </div>
       </form>
       <div class="text-center text-muted mt-3">
-        Already have an account? <a href="{{ route('author.login') }}" tabindex="-1">Sign in</a>
+        Already have an account? <a href="{{ route('login') }}" tabindex="-1">Sign in</a>
       </div>
     </div>
   </div>
