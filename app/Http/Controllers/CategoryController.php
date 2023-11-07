@@ -14,8 +14,8 @@ class CategoryController extends Controller
     */
     public function index()
     {
-        $companies = Category::orderBy('id','desc')->paginate(5);
-        return view('categories.index', compact('companies'));
+        $categories = Category::orderBy('id','desc')->paginate(5);
+        return view('backend.category.index', compact('categories'));
     }
 
     /**
@@ -25,7 +25,7 @@ class CategoryController extends Controller
     */
     public function create()
     {
-        return view('categories.create');
+        return view('backend.category.create');
     }
 
     /**
@@ -38,25 +38,24 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
-            'address' => 'required',
+            'detail' => 'required',           
         ]);
         
-        Category::create($request->post());
+        Category::create($request->post());        
+        return redirect()->route('category.index')->with('success', 'Category has been created successfully');        
 
-        return redirect()->route('categories.index')->with('success','Company has been created successfully.');
     }
 
   
     public function show(Category $category)
     {
-        return view('categories.show',compact('category'));
+        return view('category.show',compact('category'));
     }
 
   
     public function edit(Category $category)
     {
-        return view('categories.edit',compact('category'));
+        return view('backend.category.edit',compact('category'));
     }
 
  
@@ -64,19 +63,19 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
-            'address' => 'required',
+            'detail' => 'required',
+            
         ]);
         
         $category->fill($request->post())->save();
 
-        return redirect()->route('categories.index')->with('success','Company Has Been updated successfully');
+        return redirect()->route('category.index')->with('success','Category Has Been updated successfully');
     }
 
    
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('categories.index')->with('success','Company has been deleted successfully');
+        return redirect()->route('category.index')->with('success','Category has been deleted successfully');
     }
 }

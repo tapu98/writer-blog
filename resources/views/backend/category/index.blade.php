@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Category Profile</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
-</head>
-<body>
+@extends('backend.layouts.auth-layout')
+
+@section('content')
     <div class="container mt-2">
         <div class="row">
             <div class="col-lg-12 margin-tb">
@@ -13,7 +8,7 @@
                     <h2>Category Details</h2>
                 </div>
                 <div class="pull-right mb-2">
-                    <a class="btn btn-success" href="{{ route('categories.create') }}"> Create Categories</a>
+                    <a class="btn btn-success" href="{{ route('category.create') }}"> Create Categories</a>
                 </div>
             </div>
         </div>
@@ -27,31 +22,30 @@
                 <tr>
                     <th>S.No</th>
                     <th>Category Name</th>
-                    <th>Category Email</th>
-                    <th>Category Address</th>
+                    <th>Category Detail</th>
+
                     <th width="280px">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($companies as $company)
+                @foreach ($categories as $category)
                     <tr>
                         <td>{{ $category->id }}</td>
                         <td>{{ $category->name }}</td>
-                        <td>{{ $category->email }}</td>
-                        <td>{{ $category->address }}</td>
+                        <td>{{ $category->detail }}</td>
+
                         <td>
-                            <form action="{{ route('companies.destroy',$category->id) }}" method="Post">
-                                <a class="btn btn-primary" href="{{ route('companies.edit',$category->id) }}">Edit</a>
+                            <form action="{{ route('category.destroy', $category->id) }}" method="Post">
+                                <a class="btn btn-primary" href="{{ route('category.edit', $category->id) }}">Edit</a>
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
                         </td>
                     </tr>
-                    @endforeach
+                @endforeach
             </tbody>
         </table>
         {!! $categories->links() !!}
     </div>
-</body>
-</html>
+@endsection
