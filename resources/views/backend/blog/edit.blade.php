@@ -4,10 +4,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Edit Category</h2>
+                <h2>Edit Blog</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('category.index') }}" enctype="multipart/form-data">
+                <a class="btn btn-primary" href="{{ route('blog.index') }}" enctype="multipart/form-data">
                     Back</a>
             </div>
         </div>
@@ -17,15 +17,15 @@
         {{ session('status') }}
     </div>
     @endif
-    <form action="{{ route('category.update',$category->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('blog.update',$blog->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Category Name:</strong>
-                    <input type="text" name="name" value="{{ $category->name }}" class="form-control"
-                        placeholder="Category name">
+                    <strong>Blog Name:</strong>
+                    <input type="text" name="name" value="{{ $blog->name }}" class="form-control"
+                        placeholder="Blog name">
                     @error('name')
                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                     @enderror
@@ -34,10 +34,21 @@
             
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Category Details:</strong>
-                    <input type="text" name="detail" value="{{ $category->detail }}" class="form-control"
-                        placeholder="Category Detail">
-                    @error('detail')
+                    <strong>Blog Type:</strong>
+                    <input type="text" name="type" value="{{ $blog->type }}" class="form-control"
+                        placeholder="Blog Type">
+                    @error('type')
+                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Blog Description:</strong>
+                    <input type="text" name="description" value="{{ $blog->description }}" class="form-control"
+                        placeholder="Blog Description">
+                    @error('description')
                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                     @enderror
                 </div>
@@ -47,4 +58,3 @@
     </form>
 </div>
 @endsection
-

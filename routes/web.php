@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\WebsiteController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\AuthorController;
 use \App\Http\Controllers\AuthController;
@@ -46,7 +48,29 @@ Route::get('/home', [HomeController::class, 'index']);
 Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
 
 Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
-Route::get('/category/delete/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 Route::post('/category', [CategoryController::class, 'store'])->name('category.store');
-Route::get('/category/edit/{id}', [CategoryController::class, 'destroy'])->name('category.edit');
+
+Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+Route::put('/category/update', [CategoryController::class, 'update'])->name('category.update');
+Route::delete('/category/delete/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+
+//blog
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+
+
+Route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
+Route::post('/blog', [BlogController::class, 'store'])->name('blog.store');
+
+Route::get('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
+Route::put('/blog/update', [BlogController::class, 'update'])->name('blog.update');
+Route::delete('/blog/delete/{id}', [BlogController::class, 'destroy'])->name('blog.destroy');
+
+Route::get('/email', [BlogController::class, 'email'])->name('blog.email');
+
+//frontend
+Route::get('/index', [WebsiteController::class, 'index'])->name('website.index');
+Route::get('/about', [WebsiteController::class, 'about'])->name('website.about');
+Route::get('/post', [WebsiteController::class, 'post'])->name('website.post');
+Route::get('/contact', [WebsiteController::class, 'contact'])->name('website.contact');
+
 

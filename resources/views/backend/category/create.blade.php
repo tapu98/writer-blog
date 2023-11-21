@@ -1,6 +1,6 @@
 @extends('backend.layouts.auth-layout')
 @section('content')
-<div class="container mt-2">
+<div class="container mt-2" style="padding-left:150px !important">
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left mb-2">
@@ -42,4 +42,4 @@
         </div>
     </form>
 </div>
-@endsection
+@endsection 

@@ -53,8 +53,9 @@ class CategoryController extends Controller
     }
 
   
-    public function edit(Category $category)
-    {
+    public function edit($id)
+    {        
+       $category = Category::where('id',$id)->first();
         return view('backend.category.edit',compact('category'));
     }
 
@@ -63,8 +64,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'detail' => 'required',
-            
+            'detail' => 'required',            
         ]);
         
         $category->fill($request->post())->save();
@@ -73,9 +73,9 @@ class CategoryController extends Controller
     }
 
    
-    public function destroy(Category $category)
+    public function destroy( $id)
     {
-        $category->delete();
+        Category::where('id',$id)->delete();
         return redirect()->route('category.index')->with('success','Category has been deleted successfully');
     }
 }

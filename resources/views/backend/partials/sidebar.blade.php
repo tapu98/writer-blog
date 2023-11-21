@@ -36,8 +36,8 @@
                   <a class="dropdown-item" href="{{route('category.index')}}">
                     Category
                   </a>
-                  <a class="dropdown-item" href="{{route('category.index')}}">
-                    Blank page
+                  <a class="dropdown-item" href="{{route('blog.index')}}">
+                    Blog
                   </a>                  
                 </div>                  
               </div>

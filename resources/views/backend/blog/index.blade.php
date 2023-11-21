@@ -1,14 +1,13 @@
 @extends('backend.layouts.auth-layout')
-
-@section('content')
+@section('content')    
     <div class="container mt-2" style="padding-left:150px !important">
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
-                    <h2>Category Details</h2>
+                    <h2>Blog Details</h2>
                 </div>
                 <div class="pull-right mb-2">
-                    <a class="btn btn-success" href="{{ route('category.create') }}"> Create Categories</a>
+                    <a class="btn btn-success" href="{{ route('blog.create') }}"> Create Blog</a>
                 </div>
             </div>
         </div>
@@ -21,22 +20,26 @@
             <thead>
                 <tr>
                     <th>S.No</th>
+                    <th>Blog Name</th>
+                    <th>Blog Type</th>
+                    <th>Blog Description</th>
                     <th>Category Name</th>
-                    <th>Category Detail</th>
 
                     <th width="280px">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($categories as $category)
+                @foreach ($blogs as $blog)
                     <tr>
-                        <td>{{ $category->id }}</td>
-                        <td>{{ $category->name }}</td>
-                        <td>{{ $category->detail }}</td>
+                        <td>{{ $blog->id }}</td>
+                        <td>{{ $blog->name }}</td>
+                        <td>{{ $blog->type }}</td>
+                        <td>{{ $blog->description }}</td>
+                        <td>{{ $blog->category }}</td>                       
 
                         <td>
-                            <form action="{{ route('category.destroy', $category->id) }}" method="POST">
-                                <a class="btn btn-primary" href="{{ route('category.edit', $category->id) }}">Edit</a>
+                            <form action="{{ route('blog.destroy', $blog->id) }}" method="POST">
+                                <a class="btn btn-primary" href="{{ route('blog.edit', $blog->id) }}">Edit</a>
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>
@@ -46,6 +49,6 @@
                 @endforeach
             </tbody>
         </table>
-        {!! $categories->links() !!}
+        {!! $blogs->links() !!}
     </div>
 @endsection
