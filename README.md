@@ -100,7 +100,7 @@ cp .env.example .env
 php artisan key:generate
 ```
 6.Configure your database settings in the .env file.
-```
+
 7.Migrate the database:
 ```bash
 php artisan migrate
