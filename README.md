@@ -65,9 +65,7 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-install this project----
-# Laravel Project
-
+# Install Laravel Project----
 This is a Laravel project that [provides a brief description of your project].
 
 ## Prerequisites
@@ -89,40 +87,32 @@ git clone https://github.com/your-username/your-laravel-project.git
 ```bash
 cd your-laravel-project
 ```
-Install PHP dependencies using Composer:
-
-bash
-Copy code
+3.Install PHP dependencies using Composer:
+```bash
 composer install
-Copy the .env.example file to .env:
-
-bash
-Copy code
+```
+4.Copy the .env.example file to .env:
+```bash
 cp .env.example .env
-Generate an application key:
-
-bash
-Copy code
+```
+5.Generate an application key:
+```bash
 php artisan key:generate
-Configure your database settings in the .env file.
-
-Migrate the database:
-
-bash
-Copy code
+```
+6.Configure your database settings in the .env file.
+```
+7.Migrate the database:
+```bash
 php artisan migrate
-Install JavaScript dependencies using npm:
-
-bash
-Copy code
+```
+8.Install JavaScript dependencies using npm:
+```bash
 npm install
-Compile assets:
-
-bash
-Copy code
+```
+9.Compile assets:
+```bash
 npm run dev
-Start the development server:
-
-bash
-Copy code
+```
+10.Start the development server:
+```bash
 php artisan serve
